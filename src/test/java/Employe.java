@@ -7,4 +7,7 @@ public class Employe {
     private String poste;
     private String departement;
     private String dateEmbauche;
+    private String adresse;
+    private String telephone;
+    private boolean estActif;
 }
