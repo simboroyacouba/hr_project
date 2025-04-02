@@ -9,6 +9,8 @@ import java.util.Set;
 import java.util.UUID;
 
 @MappedSuperclass
+@Setter
+@Getter
 public class Utilisateur  extends BaseEntity {
 
     @Id

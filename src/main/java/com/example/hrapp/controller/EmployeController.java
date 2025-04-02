@@ -18,17 +18,28 @@ public class EmployeController {
     private EmployeService employeService;
 
     @GetMapping
-    public ResponseEntity<List<Employe>> getAllEmployes() {
+    public ResponseEntity<?> getAllEmployes() {
         return new ResponseEntity<>(employeService.getAllEmployes(), HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<Employe> createEmploye(@RequestBody Employe employe) {
-        return new ResponseEntity<>(employeService.saveEmploye(employe), HttpStatus.OK);
+    public  ResponseEntity<?> createEmploye(@RequestBody EmployeForm employe) {
+        Employe employe1 = new Employe();
+        employe1.setNom(employe.getNom());
+        employe1.setPrenom(employe.getPrenom());
+        employe1.setEmail(employe.getEmail());
+        employe1.setSalaire(employe.getSalaire());
+        employe1.setPoste(employe.getPoste());
+        employe1.setDepartement(employe.getDepartement());
+        employe1.setAdresse(employe.getAdresse());
+        employe1.setTelephone(employe.getTelephone());
+        employe1.setPassword(employe.getPassword());
+        employe1.setUsername(employe.getUsername());
+        return new ResponseEntity<>(employeService.saveEmploye(employe1), HttpStatus.OK);
     }
 
     @GetMapping("/{guid}")
-    public ResponseEntity<Employe> getEmployeById(@PathVariable String guid) {
+    public  ResponseEntity<?> getEmployeById(@PathVariable String guid) {
         Employe employe = employeService.getEmployeById(guid);
         return new ResponseEntity<>(employe, HttpStatus.OK);
     }
